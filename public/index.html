@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>welcome!</title>
+<link rel="stylesheet" type="text/css" href="/assets/style.css">
+<script>
+  var xhr = new XMLHttpRequest();
+  xhr.responseType = 'blob';
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      var img = document.createElement('img');
+      img.src = URL.createObjectURL(xhr.response);
+      document.body.appendChild(img);
+    }
+  };
+  xhr.open('GET', 'http://localhost:3000/azure/test.png', true);
+  xhr.setRequestHeader('Authorization', 'authorization');
+  xhr.send();
+</script>
+</head>
+<body>
+
+<div>Async request image.</div>
+
+<img src="/assets/test.png"></img>
+<iframe src="/assets/iframe.html"></iframe>
+<script src="/assets/test.js"></script>
+</body>
+</html>
